@@ -20,7 +20,6 @@ var (
 
 func init() {
 	flag.Parse()
-
 	if *password == "" {
 		log.Fatal("You must have a password")
 	}
