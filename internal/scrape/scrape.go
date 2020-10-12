@@ -35,27 +35,23 @@ func Scrape(host, password string) {
 	}
 
 	for {
-		recieved, status, err := getData(host, cookies)
+		received, status, err := getData(host, cookies)
 		if err != nil {
 			log.Printf("Error requesting resource: %v", err)
-			if retried {
-				log.Fatalf("Back to back requests with errors, exiting: %v", err)
-			}
-			retried = true
 			time.Sleep(15 * time.Second)
 			continue
 		}
 
 		if status != 200 {
 			if status == 401 {
-				log.Printf("Relogging in")
+				log.Printf("Re-logging in")
 				cookies, err = login(host, password)
 				if err != nil {
 					if retried {
-						log.Fatalf("Back to back requests with errors, exiting: %v", err)
+						log.Fatalf("Back to back requests with login errors, exiting: %v", err)
 					}
 					retried = true
-					log.Printf("Failed relogging in")
+					log.Printf("Failed re-logging in")
 				}
 				time.Sleep(15 * time.Second)
 				continue
@@ -69,8 +65,8 @@ func Scrape(host, password string) {
 			continue
 		}
 
-		metrics.TXMinute1.Set(float64(recieved.Bandwidth.MinutesTX[0] * 8))
-		metrics.RXMinute1.Set(float64(recieved.Bandwidth.MinutesRX[0] * 8))
+		metrics.TXMinute1.Set(float64(received.Bandwidth.MinutesTX[0] * 8))
+		metrics.RXMinute1.Set(float64(received.Bandwidth.MinutesRX[0] * 8))
 
 		retried = false
 		time.Sleep(15 * time.Second)
