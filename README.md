@@ -15,13 +15,13 @@ This is a Prometheus Exporter for the Verizon Fios Quantum Gateway Router that I
 
 `--host`: The address to your router (optional). Default: https://myfiosgateway.com
 
-`--port`: The port where the metrics are hosted (optional). Default: 2100
+`--port`: The port where the metrics are hosted (optional). Default: 2190
 
 ### Docker (recomended):
 
 CLI:
 
-`docker run -d -p 2100:2100 ghcr.io/leviharrison/fios-exporter:v1.1 --password=<you_password>`
+`docker run -d -p 2190:2190 ghcr.io/leviharrison/fios-exporter:v1.1 --password=<your_password>`
 
 Docker compose:
 
@@ -33,5 +33,5 @@ version: '3'
       command:
         - "--password=<your_password>"
       ports:
-        - "2100:2100"
+        - "2190:2190"
 ```
