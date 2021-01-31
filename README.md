@@ -21,7 +21,7 @@ This is a Prometheus Exporter for the Verizon Fios Quantum Gateway Router that I
 
 CLI:
 
-`docker run -d -p 2100:2100 ghcr.io/leviharrison/fios-exporter --password=<you_password>`
+`docker run -d -p 2100:2100 ghcr.io/leviharrison/fios-exporter:v1.1 --password=<you_password>`
 
 Docker compose:
 
@@ -29,7 +29,7 @@ Docker compose:
 version: '3'
   services:
     fios-exporter:
-      image: ghcr.io/leviharrison/fios-exporter
+      image: ghcr.io/leviharrison/fios-exporter:v1.1
       command:
         - "--password=<your_password>"
       ports:
