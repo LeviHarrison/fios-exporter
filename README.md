@@ -1,4 +1,5 @@
 # Fios Exporter
+
 This is a Prometheus Exporter for the Verizon Fios Quantum Gateway Router that I made for my Grafana Dashboard. Currently it only does bandwidth stats, specifically the average kilobits/second over the last minute, which is the closet you'll get to what's currently passing through your router. I'm happy to add more stats if people are interested, feel free to open an issue or even a pull request.
 
 ## Metrics
@@ -17,7 +18,7 @@ This is a Prometheus Exporter for the Verizon Fios Quantum Gateway Router that I
 
 `--port`: The port where the metrics are hosted (optional). Default: 2190
 
-### Docker (recomended):
+### Docker (recommended):
 
 CLI:
 
